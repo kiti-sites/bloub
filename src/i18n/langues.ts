@@ -14,6 +14,7 @@
  * pas la langue affichee.
  */
 export const LANGUES = [
+  { id: 'pt', tag: 'pt-BR', emoji: '🇧🇷', nom: 'Português' },
   { id: 'fr', tag: 'fr', emoji: '🇫🇷', nom: 'Français' },
   { id: 'en', tag: 'en', emoji: '🇬🇧', nom: 'English' },
   { id: 'zh', tag: 'zh-Hans', emoji: '🇨🇳', nom: '简体中文' }
@@ -21,7 +22,7 @@ export const LANGUES = [
 
 export type Langue = (typeof LANGUES)[number]['id']
 
-export const LANGUE_PAR_DEFAUT: Langue = 'fr'
+export const LANGUE_PAR_DEFAUT: Langue = 'pt'
 
 export function estLangue(valeur: string | null | undefined): valeur is Langue {
   return LANGUES.some((l) => l.id === valeur)

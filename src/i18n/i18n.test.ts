@@ -5,6 +5,7 @@ import { STATES } from '@/bot/states'
 import { formePlurielle, interpoler } from './format'
 import { choisirLangue, LANGUES, tagDe } from './langues'
 import fr from './locales/fr'
+import pt from './locales/pt'
 import en from './locales/en'
 import zh from './locales/zh'
 
@@ -14,7 +15,7 @@ import zh from './locales/zh'
  * navigateur. C'est precisement pour ca que la regle de choix de langue et la
  * mecanique de texte vivent dans des fichiers separes.
  */
-const DICTIONNAIRES = { fr, en, zh }
+const DICTIONNAIRES = { pt, fr, en, zh }
 
 describe('choix de la langue au demarrage', () => {
   it('respecte le choix memorise, quelles que soient les preferences du navigateur', () => {
@@ -44,9 +45,9 @@ describe('choix de la langue au demarrage', () => {
     expect(choisirLangue(null, ['pas une etiquette', 'zh'])).toBe('zh')
   })
 
-  it('retombe sur le francais quand rien ne correspond', () => {
-    expect(choisirLangue(null, ['de-DE', 'ja-JP'])).toBe('fr')
-    expect(choisirLangue(null, [])).toBe('fr')
+  it('retombe sur le portugais quand rien ne correspond', () => {
+    expect(choisirLangue(null, ['de-DE', 'ja-JP'])).toBe('pt')
+    expect(choisirLangue(null, [])).toBe('pt')
   })
 })
 
@@ -139,8 +140,8 @@ describe('pluriel', () => {
 })
 
 describe('catalogue des langues', () => {
-  it('propose les trois langues, avec un drapeau et un endonyme', () => {
-    expect(LANGUES.map((l) => l.id)).toEqual(['fr', 'en', 'zh'])
+  it('propose les quatre langues, avec un drapeau et un endonyme', () => {
+    expect(LANGUES.map((l) => l.id)).toEqual(['pt', 'fr', 'en', 'zh'])
     for (const l of LANGUES) {
       expect(l.emoji.length, l.id).toBeGreaterThan(0)
       expect(l.nom.trim(), l.id).not.toBe('')
